@@ -24,7 +24,7 @@ export const Login = () =>{
                 onChangeText={text => setPassword(text)}
             />
 
-            <Button contentStyle={styles.buttonContentStyle} labelStyle={styles.textStyle} style={styles.loginButton} icon="chevron-right-circle-outline" mode="contained" onPress={() => console.log('Pressed')}>
+            <Button contentStyle={styles.buttonContentStyle} labelStyle={styles.textStyle} style={styles.loginButton} mode="contained" onPress={() => console.log('Pressed')}>
                 LOGIN
             </Button>
         </View>
