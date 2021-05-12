@@ -1,10 +1,32 @@
 import React from 'react';
 import {Button, Avatar, TextInput} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {useDispatch} from 'react-redux';
+import {login} from '../../redux/authentication.reducer';
 
 export const Login = () =>{
+
+    const dispatch = useDispatch();
+
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [hidePassword, setHidePassword] = React.useState(true);
+    const [eyeIcon, setEyeIcon] = React.useState('eye');
+
+    const submitLogin = () =>{
+        console.log('Pressed')
+        dispatch(login(username,password))
+    }
+
+    const toggleShowPassword = () =>{
+        setHidePassword(!hidePassword);
+        if(eyeIcon === 'eye'){
+            setEyeIcon('eye-slash')
+        }else{
+            setEyeIcon('eye')
+        }
+    }
 
     return(
         <View style={styles.container}>
@@ -19,12 +41,19 @@ export const Login = () =>{
 
             <TextInput
                 label="password"
+                secureTextEntry={hidePassword}
                 style={styles.password}
                 value={password}
                 onChangeText={text => setPassword(text)}
+                right={
+                    <TextInput.Icon
+                        name={()=><Icon name={eyeIcon} color="#C8C8C8" style={{fontSize: 20}}/>} // where <Icon /> is any component from vector-icons or anything else
+                        onPress={toggleShowPassword}
+                    />
+                }
             />
 
-            <Button contentStyle={styles.buttonContentStyle} labelStyle={styles.textStyle} style={styles.loginButton} mode="contained" onPress={() => console.log('Pressed')}>
+            <Button contentStyle={styles.buttonContentStyle} labelStyle={styles.textStyle} style={styles.loginButton} mode="contained" onPress={submitLogin}>
                 LOGIN
             </Button>
         </View>
