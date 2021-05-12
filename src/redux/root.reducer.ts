@@ -1,8 +1,8 @@
-import authentication,{AuthState} from './authentication.reducer';
+import authentication,{AuthenticationState} from './authentication.reducer';
 import {combineReducers} from 'redux';
 
 export interface IRootState {
-    readonly authentication:AuthState;
+    readonly authentication:AuthenticationState;
 }
 
 
