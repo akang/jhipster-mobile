@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button, Avatar, TextInput} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../redux/authentication.reducer';
+import {IRootState} from '../../redux/root.reducer';
 
 export const Login = () =>{
 
@@ -13,11 +14,17 @@ export const Login = () =>{
     const [password, setPassword] = React.useState('');
     const [hidePassword, setHidePassword] = React.useState(true);
     const [eyeIcon, setEyeIcon] = React.useState('eye');
+    const jwt = useSelector((state: IRootState) => state.authentication.jwt);
 
     const submitLogin = () =>{
         console.log('Pressed')
         dispatch(login(username,password))
     }
+
+    useEffect(()=>{
+        console.log('reading jwt')
+        console.log(jwt)
+    },[jwt]);
 
     const toggleShowPassword = () =>{
         setHidePassword(!hidePassword);
