@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-import {Button, Avatar, TextInput} from 'react-native-paper';
+import {Avatar, Button, TextInput} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
-import {clearAuthentication, clearAuthToken, login} from '../../redux/authentication.reducer';
+import {login} from '../../redux/authentication.reducer';
 import {IRootState} from '../../redux/root.reducer';
-import {Simulate} from 'react-dom/test-utils';
 
 export const Login = () =>{
 

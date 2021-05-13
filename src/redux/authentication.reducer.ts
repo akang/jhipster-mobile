@@ -107,7 +107,6 @@ export const login: (username: string, password: string, rememberMe?: boolean) =
     const bearerToken = result.value.headers.authorization;
     if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
         const jwt = bearerToken.slice(7, bearerToken.length);
-        console.log('returned token from auth: ' + jwt)
         if (rememberMe) {
             await SecureStore.setItemAsync('authentication-token', jwt);
         } else {
