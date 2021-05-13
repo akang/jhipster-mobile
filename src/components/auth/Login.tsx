@@ -6,7 +6,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../redux/authentication.reducer';
 import {IRootState} from '../../redux/root.reducer';
 
-export const Login = () =>{
+export const Login = (props:{onSuccessfulLogin}) =>{
+
+    const {onSuccessfulLogin} = props;
 
     const dispatch = useDispatch();
 
@@ -16,14 +18,19 @@ export const Login = () =>{
     const [eyeIcon, setEyeIcon] = React.useState('eye');
     const account = useSelector((state: IRootState) => state.authentication.account);
     const loginError = useSelector((state: IRootState) => state.authentication.loginError);
+    const isAuthenticated = useSelector((state: IRootState) => state.authentication.isAuthenticated);
 
     const submitLogin = () =>{
         dispatch(login(username,password))
     }
 
     useEffect(()=>{
-        console.log(account)
-    },[account]);
+
+        if(isAuthenticated){
+            console.log(account)
+            onSuccessfulLogin()
+        }
+    },[isAuthenticated]);
 
     useEffect(()=>{
         if(loginError){
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
         paddingTop:50,
         paddingBottom:50,
         width: '100%',
-        height: '50%'
+        height: '60%'
     },
 
     username:{
