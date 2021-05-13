@@ -1,8 +1,12 @@
 import rootReducer,{IRootState} from './root.reducer';
 import {applyMiddleware, compose, createStore} from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
+import thunkMiddleware from 'redux-thunk';
+import errorMiddleware from './config/error-middleware';
 
 const defaultMiddlewares = [
+    thunkMiddleware,
+    errorMiddleware,
     promiseMiddleware
 ]
 
