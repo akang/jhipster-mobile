@@ -1,8 +1,6 @@
-import {IAccount} from '../models/account.model';
 import axios from 'axios';
-import {SERVER_API_URL} from '../constants';
 import {FAILURE, REQUEST, SUCCESS} from './action-type.util';
-
+import * as SecureStore from 'expo-secure-store';
 
 const initialState = {
     loading: false,
@@ -109,23 +107,19 @@ export const login: (username: string, password: string, rememberMe?: boolean) =
     const bearerToken = result.value.headers.authorization;
     if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
         const jwt = bearerToken.slice(7, bearerToken.length);
-        console.log(jwt)
-        // if (rememberMe) {
-        //     Storage.local.set(AUTH_TOKEN_KEY, jwt);
-        // } else {
-        //     Storage.session.set(AUTH_TOKEN_KEY, jwt);
-        // }
+        console.log('returned token from auth: ' + jwt)
+        if (rememberMe) {
+            await SecureStore.setItemAsync('authentication-token', jwt);
+        } else {
+            // TODO
+            console.log('handle this')
+        }
     }
     await dispatch(getSession());
 };
 
-export const clearAuthToken = () => {
-    // if (Storage.local.get(AUTH_TOKEN_KEY)) {
-    //     Storage.local.remove(AUTH_TOKEN_KEY);
-    // }
-    // if (Storage.session.get(AUTH_TOKEN_KEY)) {
-    //     Storage.session.remove(AUTH_TOKEN_KEY);
-    // }
+export const clearAuthToken = async () => {
+    // await SecureStore.deleteItemAsync('authentication-token');
 };
 
 export const displayAuthError = message => ({ type: ACTION_TYPES.ERROR_MESSAGE, message });

@@ -3,8 +3,9 @@ import {Button, Avatar, TextInput} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../redux/authentication.reducer';
+import {clearAuthentication, clearAuthToken, login} from '../../redux/authentication.reducer';
 import {IRootState} from '../../redux/root.reducer';
+import {Simulate} from 'react-dom/test-utils';
 
 export const Login = () =>{
 
@@ -14,17 +15,23 @@ export const Login = () =>{
     const [password, setPassword] = React.useState('');
     const [hidePassword, setHidePassword] = React.useState(true);
     const [eyeIcon, setEyeIcon] = React.useState('eye');
-    const jwt = useSelector((state: IRootState) => state.authentication.jwt);
+    const account = useSelector((state: IRootState) => state.authentication.account);
+    const loginError = useSelector((state: IRootState) => state.authentication.loginError);
 
     const submitLogin = () =>{
-        console.log('Pressed')
         dispatch(login(username,password))
     }
 
     useEffect(()=>{
-        console.log('reading jwt')
-        console.log(jwt)
-    },[jwt]);
+        console.log(account)
+    },[account]);
+
+    useEffect(()=>{
+        if(loginError){
+            alert('Incorrect username or password')
+        }
+
+    },[loginError]);
 
     const toggleShowPassword = () =>{
         setHidePassword(!hidePassword);
