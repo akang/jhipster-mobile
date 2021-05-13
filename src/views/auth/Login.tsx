@@ -69,12 +69,13 @@ export const Login = () =>{
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop:50,
-        paddingBottom:30,
+        paddingBottom:50,
+        width: '100%',
+        height: '50%'
     },
 
     username:{
