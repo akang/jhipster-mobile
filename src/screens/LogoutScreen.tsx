@@ -2,10 +2,19 @@ import React from 'react';
 
 import {StyleSheet, View} from 'react-native';
 import { Avatar, Button, Card, Paragraph } from 'react-native-paper';
+import {useDispatch} from 'react-redux';
+import {logout} from '../redux/authentication.reducer';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="location-exit" />
 
 export const LogoutScreen = (props) => {
+
+    const dispatch = useDispatch();
+
+    const handleLogout = () =>{
+        dispatch(logout())
+    }
+
     return (
         <View style={styles.container}>
             <Card style={styles.card}>
@@ -17,7 +26,7 @@ export const LogoutScreen = (props) => {
 
                 <Card.Actions>
                     <Button onPress={()=>props.jumpTo('home')}>Cancel</Button>
-                    <Button onPress={()=>console.log('logout pressed')}>Ok</Button>
+                    <Button onPress={handleLogout}>Ok</Button>
                 </Card.Actions>
             </Card>
         </View>

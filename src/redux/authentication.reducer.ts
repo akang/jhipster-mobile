@@ -83,6 +83,11 @@ export default (state:AuthenticationState = initialState, action: any):Authentic
                 showModalLogin: true,
                 isAuthenticated: false,
             };
+        case ACTION_TYPES.LOGOUT:
+            return {
+                ...initialState,
+                isAuthenticated: false,
+            };
         default:
             return state;
     }
@@ -118,7 +123,7 @@ export const login: (username: string, password: string, rememberMe?: boolean) =
 };
 
 export const clearAuthToken = async () => {
-    // await SecureStore.deleteItemAsync('authentication-token');
+    await SecureStore.deleteItemAsync('authentication-token');
 };
 
 export const displayAuthError = message => ({ type: ACTION_TYPES.ERROR_MESSAGE, message });
@@ -128,5 +133,12 @@ export const clearAuthentication = messageKey => (dispatch, getState) => {
     dispatch(displayAuthError(messageKey));
     dispatch({
         type: ACTION_TYPES.CLEAR_AUTH,
+    });
+};
+
+export const logout: () => void = () => dispatch => {
+    clearAuthToken();
+    dispatch({
+        type: ACTION_TYPES.LOGOUT,
     });
 };
