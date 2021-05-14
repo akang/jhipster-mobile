@@ -10,7 +10,7 @@ import {IRootState} from './redux/root.reducer';
 
 const Stack = createStackNavigator();
 
-export const Navigator = () => {
+export const MainNavigator = () => {
 
     const isAuthenticated = useSelector((state: IRootState) => state.authentication.isAuthenticated);
 
