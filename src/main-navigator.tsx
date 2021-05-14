@@ -6,6 +6,8 @@ import {LoginScreen} from './screens/login-screen';
 import {BottomNavigatorScreen} from './screens/bottom-navigator-screen';
 import {useSelector} from 'react-redux';
 import {IRootState} from './redux/root.reducer';
+import {CreateAccountScreen} from './screens/create-account-screen';
+import {ForgotPasswordScreen} from './screens/forgot-password-screen';
 
 
 const Stack = createStackNavigator();
@@ -18,16 +20,32 @@ export const MainNavigator = () => {
         <Stack.Navigator>
             {isAuthenticated === false ? (
                 // No token found, user isn't signed in
-                <Stack.Screen
-                    name="SignIn"
-                    component={LoginScreen}
-                    options={{
-                        title: 'Sign in',
-                        // When logging out, a pop animation feels intuitive
-                        // You can remove this if you want the default 'push' animation
-                        animationTypeForReplace: !isAuthenticated ? 'pop' : 'push',
-                    }}
-                />
+                <>
+                    <Stack.Screen
+                        name="SignIn"
+                        component={LoginScreen}
+                        options={{
+                            title: 'Sign in',
+                            animationTypeForReplace: !isAuthenticated ? 'pop' : 'push',
+                        }}
+                    />
+
+                    <Stack.Screen
+                        name="CreateAccount"
+                        component={CreateAccountScreen}
+                        options={{
+                            title: 'Create Account'
+                        }}
+                    />
+
+                    <Stack.Screen
+                        name="ForgotPassword"
+                        component={ForgotPasswordScreen}
+                        options={{
+                            title: 'Forgot Password'
+                        }}
+                    />
+                </>
             ) : (
                 // User is signed in
                 <Stack.Screen name="JHipster Mobile" component={BottomNavigatorScreen} />

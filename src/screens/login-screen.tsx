@@ -4,23 +4,20 @@ import {LoginForm} from '../components/auth/login-form';
 import {Button} from 'react-native-paper';
 
 
-export const LoginScreen = () => {
+export const LoginScreen = (props:{navigation:any}) => {
 
-    const onSuccessfulLogin = () =>{
-        console.log('navigate to menu')
-        //navigation.navigate('Menu')
-    }
+    const {navigation} = props;
 
     return (
 
             <View style={styles.container}>
-                <LoginForm onSuccessfulLogin={onSuccessfulLogin}/>
+                <LoginForm/>
 
-                <Button mode="text" onPress={() => console.log('Pressed create account')} style={{marginTop:20}}>
+                <Button mode="text" onPress={() => navigation.navigate('CreateAccount')} style={{marginTop:20}}>
                     CREATE ACCOUNT
                 </Button>
 
-                <Button mode="text" onPress={() => console.log('Pressed forgot password')} style={{marginTop:10}}>
+                <Button mode="text" onPress={() => navigation.navigate('ForgotPassword')} style={{marginTop:10}}>
                     FORGOT PASSWORD
                 </Button>
             </View>

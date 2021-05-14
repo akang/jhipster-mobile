@@ -1,46 +1,24 @@
 import React, {useEffect} from 'react';
-import {Avatar, Button, TextInput} from 'react-native-paper';
+import {Button, TextInput, Title} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../redux/authentication.reducer';
+import {handleRegister, reset} from '../../redux/register.reducer';
 import {IRootState} from '../../redux/root.reducer';
 
-export const LoginForm = (props:{successfulLoginCallback?:any}) =>{
+export const CreateAccountForm = (props:{navigation?:any}) =>{
 
-    const {successfulLoginCallback} = props;
+    const {navigation} = props;
 
     const dispatch = useDispatch();
 
     const [username, setUsername] = React.useState('');
+    const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [hidePassword, setHidePassword] = React.useState(true);
     const [eyeIcon, setEyeIcon] = React.useState('eye');
-    const account = useSelector((state: IRootState) => state.authentication.account);
-    const loginError = useSelector((state: IRootState) => state.authentication.loginError);
-    const isAuthenticated = useSelector((state: IRootState) => state.authentication.isAuthenticated);
+    const registrationSuccess = useSelector((state: IRootState) => state.register.registrationSuccess);
 
-    const submitLogin = () =>{
-        dispatch(login(username,password))
-    }
-
-    useEffect(()=>{
-
-        if(isAuthenticated){
-            console.log(account)
-            if(successfulLoginCallback){
-                successfulLoginCallback()
-            }
-
-        }
-    },[isAuthenticated]);
-
-    useEffect(()=>{
-        if(loginError){
-            alert('Incorrect username or password')
-        }
-
-    },[loginError]);
 
     const toggleShowPassword = () =>{
         setHidePassword(!hidePassword);
@@ -51,15 +29,37 @@ export const LoginForm = (props:{successfulLoginCallback?:any}) =>{
         }
     }
 
+    useEffect(()=>{
+        if(registrationSuccess){
+            alert('You have been registered! Please check your email for confirmation.')
+            dispatch(reset())
+            setEmail('')
+            setUsername('')
+            setPassword('')
+            navigation.navigate('SignIn')
+        }
+    },[registrationSuccess]);
+
+    const submitRegistration = () =>{
+        dispatch(handleRegister(username,email,password,'en'))
+    }
+
     return(
         <View style={styles.container}>
-            <Avatar.Icon size={100} icon="account" />
+            <Title>Let's register you real quick</Title>
 
             <TextInput
                 label="username"
                 style={styles.username}
                 value={username}
                 onChangeText={text => setUsername(text)}
+            />
+
+            <TextInput
+                label="email"
+                style={styles.email}
+                value={email}
+                onChangeText={text => setEmail(text)}
             />
 
             <TextInput
@@ -76,8 +76,9 @@ export const LoginForm = (props:{successfulLoginCallback?:any}) =>{
                 }
             />
 
-            <Button contentStyle={styles.buttonContentStyle} labelStyle={styles.textStyle} style={styles.loginButton} mode="contained" onPress={submitLogin}>
-                LOGIN
+
+            <Button contentStyle={styles.buttonContentStyle} labelStyle={styles.textStyle} style={styles.loginButton} mode="contained" onPress={submitRegistration}>
+                REGISTER
             </Button>
         </View>
     )
@@ -90,13 +91,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop:50,
         paddingBottom:50,
-        width: '100%',
+        width: '90%',
         height: '60%'
     },
 
     username:{
         width: '80%',
         marginTop: 30,
+        marginBottom: 10
+    },
+
+    email:{
+        width: '80%',
+        marginTop: 0,
         marginBottom: 10
     },
 
