@@ -5,7 +5,6 @@ import {HomeScreen} from './home-screen';
 import {LogoutScreen} from './logout-screen';
 
 
-
 export const BottomNavigatorScreen = () => {
 
     const [index, setIndex] = React.useState(0);

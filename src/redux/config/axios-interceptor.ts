@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SERVER_API_URL } from '../../constants';
+import {SERVER_API_URL} from '../../constants';
 import * as SecureStore from 'expo-secure-store';
 
 const TIMEOUT = 1 * 60 * 1000;

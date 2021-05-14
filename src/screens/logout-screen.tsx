@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {StyleSheet, View} from 'react-native';
-import { Avatar, Button, Card, Paragraph } from 'react-native-paper';
+import {Avatar, Button, Card, Paragraph} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
 import {logout} from '../redux/reducers/authentication.reducer';
 

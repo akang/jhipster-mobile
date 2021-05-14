@@ -1,6 +1,4 @@
 import * as React from 'react';
-import {AppRegistry} from 'react-native';
-import Constants from 'expo-constants';
 import {Provider as StoreProvider} from 'react-redux';
 import initStore from './src/redux/store';
 import {bindActionCreators} from 'redux';
