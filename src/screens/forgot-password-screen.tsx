@@ -1,12 +1,14 @@
 import React from 'react';
-
 import {StyleSheet, View} from 'react-native';
-import {Text} from 'react-native-paper';
+import {ForgotPasswordForm} from '../components/auth/forgot-password-form';
 
-export const ForgotPasswordScreen = () => {
+export const ForgotPasswordScreen = (props:{navigation:any}) => {
+
+    const {navigation} = props;
+
     return (
         <View style={styles.container}>
-            <Text>Forgot Password</Text>
+            <ForgotPasswordForm navigation={navigation}/>
         </View>
     );
 }
