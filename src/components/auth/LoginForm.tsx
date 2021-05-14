@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../redux/authentication.reducer';
 import {IRootState} from '../../redux/root.reducer';
 
-export const Login = (props:{onSuccessfulLogin}) =>{
+export const LoginForm = (props:{onSuccessfulLogin}) =>{
 
     const {onSuccessfulLogin} = props;
 

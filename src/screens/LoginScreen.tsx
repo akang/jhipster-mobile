@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Login} from '../components/auth/Login';
+import {LoginForm} from '../components/auth/LoginForm';
 import {Button} from 'react-native-paper';
 
 
@@ -14,7 +14,7 @@ export const LoginScreen = () => {
     return (
 
             <View style={styles.container}>
-                <Login onSuccessfulLogin={onSuccessfulLogin}/>
+                <LoginForm onSuccessfulLogin={onSuccessfulLogin}/>
 
                 <Button mode="text" onPress={() => console.log('Pressed create account')} style={{marginTop:20}}>
                     CREATE ACCOUNT
