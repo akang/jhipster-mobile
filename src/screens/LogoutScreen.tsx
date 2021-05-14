@@ -10,9 +10,11 @@ export const LogoutScreen = (props) => {
         <View style={styles.container}>
             <Card style={styles.card}>
                 <Card.Title title="Logout" left={LeftContent} />
+
                 <Card.Content>
                     <Paragraph>Are you sure you want to logout?</Paragraph>
                 </Card.Content>
+
                 <Card.Actions>
                     <Button onPress={()=>props.jumpTo('home')}>Cancel</Button>
                     <Button onPress={()=>console.log('logout pressed')}>Ok</Button>
