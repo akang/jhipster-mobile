@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {AppRegistry} from 'react-native';
 import Constants from 'expo-constants';
-import {LoginScreen} from './src/screens/LoginScreen';
 import {Provider as StoreProvider} from 'react-redux';
 import initStore from './src/redux/store';
 import {bindActionCreators} from 'redux';
 import setupAxiosInterceptors from './src/redux/config/axios-interceptor';
 import {clearAuthentication} from './src/redux/authentication.reducer';
-import {Navigator} from './src/Navigator';
+import {Navigator} from './src/navigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider as PaperProvider} from 'react-native-paper';
 
@@ -29,4 +28,3 @@ export default function App() {
   );
 }
 
-AppRegistry.registerComponent(Constants.name, () => LoginScreen);

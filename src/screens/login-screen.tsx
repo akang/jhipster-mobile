@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {LoginForm} from '../components/auth/LoginForm';
+import {LoginForm} from '../components/auth/login-form';
 import {Button} from 'react-native-paper';
 
 

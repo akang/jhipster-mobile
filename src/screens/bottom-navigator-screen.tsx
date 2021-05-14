@@ -1,12 +1,12 @@
 import React from 'react';
 import {BottomNavigation} from 'react-native-paper';
-import {SettingsScreen} from './SettingsScreen';
-import {HomeScreen} from './HomeScreen';
-import {LogoutScreen} from './LogoutScreen';
+import {SettingsScreen} from './settings-screen';
+import {HomeScreen} from './home-screen';
+import {LogoutScreen} from './logout-screen';
 
 
 
-export const BottomNavigatorContainer = () => {
+export const BottomNavigatorScreen = () => {
 
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([

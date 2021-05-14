@@ -2,8 +2,8 @@ import React from 'react';
 
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {LoginScreen} from './screens/LoginScreen';
-import {BottomNavigatorContainer} from './screens/BottomNavigatorContainer';
+import {LoginScreen} from './screens/login-screen';
+import {BottomNavigatorScreen} from './screens/bottom-navigator-screen';
 import {useSelector} from 'react-redux';
 import {IRootState} from './redux/root.reducer';
 
@@ -30,7 +30,7 @@ export const Navigator = () => {
                 />
             ) : (
                 // User is signed in
-                <Stack.Screen name="JHipster Mobile" component={BottomNavigatorContainer} />
+                <Stack.Screen name="JHipster Mobile" component={BottomNavigatorScreen} />
             )}
         </Stack.Navigator>
     );
