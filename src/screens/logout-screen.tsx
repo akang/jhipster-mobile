@@ -3,7 +3,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import { Avatar, Button, Card, Paragraph } from 'react-native-paper';
 import {useDispatch} from 'react-redux';
-import {logout} from '../redux/authentication.reducer';
+import {logout} from '../redux/reducers/authentication.reducer';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="location-exit" />
 

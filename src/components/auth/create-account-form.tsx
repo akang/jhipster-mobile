@@ -3,8 +3,8 @@ import {Button, TextInput, Title} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
-import {handleRegister, reset} from '../../redux/register.reducer';
-import {IRootState} from '../../redux/root.reducer';
+import {handleRegister, reset} from '../../redux/reducers/register.reducer';
+import {IRootState} from '../../redux/reducers/root.reducer';
 
 export const CreateAccountForm = (props:{navigation?:any}) =>{
 

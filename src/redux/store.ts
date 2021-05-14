@@ -1,4 +1,4 @@
-import rootReducer,{IRootState} from './root.reducer';
+import rootReducer,{IRootState} from './reducers/root.reducer';
 import {applyMiddleware, compose, createStore} from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import thunkMiddleware from 'redux-thunk';

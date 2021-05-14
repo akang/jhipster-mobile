@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FAILURE, REQUEST, SUCCESS} from './action-type.util';
+import {FAILURE, REQUEST, SUCCESS} from '../action-type.util';
 import * as SecureStore from 'expo-secure-store';
 
 const initialState = {

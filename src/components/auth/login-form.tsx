@@ -3,8 +3,8 @@ import {Avatar, Button, TextInput} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../redux/authentication.reducer';
-import {IRootState} from '../../redux/root.reducer';
+import {login} from '../../redux/reducers/authentication.reducer';
+import {IRootState} from '../../redux/reducers/root.reducer';
 
 export const LoginForm = (props:{successfulLoginCallback?:any}) =>{
 

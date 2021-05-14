@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {FAILURE, REQUEST, SUCCESS} from './action-type.util';
+import {FAILURE, REQUEST, SUCCESS} from '../action-type.util';
 
 export const ACTION_TYPES = {
   CREATE_ACCOUNT: 'register/CREATE_ACCOUNT',

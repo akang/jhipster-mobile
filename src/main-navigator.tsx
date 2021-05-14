@@ -5,7 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {LoginScreen} from './screens/login-screen';
 import {BottomNavigatorScreen} from './screens/bottom-navigator-screen';
 import {useSelector} from 'react-redux';
-import {IRootState} from './redux/root.reducer';
+import {IRootState} from './redux/reducers/root.reducer';
 import {CreateAccountScreen} from './screens/create-account-screen';
 import {ForgotPasswordScreen} from './screens/forgot-password-screen';
 
