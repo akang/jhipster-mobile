@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {StyleSheet, View} from 'react-native';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Avatar, Button, Card, Paragraph } from 'react-native-paper';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="location-exit" />
 
-export const LogoutScreen = () => {
+export const LogoutScreen = (props) => {
     return (
         <View style={styles.container}>
             <Card style={styles.card}>
@@ -14,7 +14,7 @@ export const LogoutScreen = () => {
                     <Paragraph>Are you sure you want to logout?</Paragraph>
                 </Card.Content>
                 <Card.Actions>
-                    <Button onPress={()=>console.log('logout cancelled')}>Cancel</Button>
+                    <Button onPress={()=>props.jumpTo('home')}>Cancel</Button>
                     <Button onPress={()=>console.log('logout pressed')}>Ok</Button>
                 </Card.Actions>
             </Card>

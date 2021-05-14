@@ -30,7 +30,7 @@ export const Navigator = () => {
                 />
             ) : (
                 // User is signed in
-                <Stack.Screen name="Home" component={BottomNavigatorContainer} />
+                <Stack.Screen name="JHipster Mobile" component={BottomNavigatorContainer} />
             )}
         </Stack.Navigator>
     );
